@@ -1,0 +1,63 @@
+<div class="container">
+    <div class="col-md-10">
+        <div class="card-com">
+            <div class="card">
+                <h5 class="card-header">Create</h5>
+                <div class="card-body">
+                    <h5 class="card-title">Fill the employee details</h5>
+                    <form [formGroup]="profileForm">
+                        <div class="form-group">
+                            <label for="exampleFormControlInput1">Name</label>
+                            <input type="text" class="form-control" formControlName="name" id="exampleFormControlInput1"
+                                placeholder="enter name">
+                            <span style="color:#f44336;font-size: 83%;"
+                                *ngIf="profileForm.get('name').invalid && profileForm.get('name').touched">
+                                <span *ngIf="profileForm.get('name').errors.required">
+                                    Name is required.
+                                </span>
+                            </span>
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleFormControlInput2">Salary</label>
+                            <input type="text" class="form-control" formControlName="salary"
+                                id="exampleFormControlInput2" placeholder="enter salary">
+                            <span style="color:#f44336;font-size: 83%;"
+                                *ngIf="profileForm.get('salary').invalid && profileForm.get('salary').touched">
+                                <span *ngIf="profileForm.get('salary').errors.required">
+                                    Salary is required.
+                                </span>
+                                <span *ngIf="profileForm.get('salary').errors.pattern">
+                                    Enter numbers only
+                                </span>
+                            </span>
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleFormControlInput2">City</label>
+                            <input type="text" class="form-control" formControlName="city" id="exampleFormControlInput2"
+                                placeholder="enter city">
+                            <span style="color:#f44336;font-size: 83%;"
+                                *ngIf="profileForm.get('city').invalid && profileForm.get('city').touched">
+                                <span *ngIf="profileForm.get('city').errors.required">
+                                    City is required.
+                                </span>
+                            </span>
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleFormControlInput2">Phone No</label>
+                            <input type="text" class="form-control" formControlName="phone"
+                                id="exampleFormControlInput2" placeholder="enter phone number">
+                            <span style="color:#f44336;font-size: 83%;"
+                                *ngIf="profileForm.get('phone').invalid && profileForm.get('phone').touched">
+                                <span *ngIf="profileForm.get('phone').errors.required">
+                                    Phone number is required.
+                                </span>
+                            </span>
+
+                        </div>
+                    </form>
+                    <button class="btn btn-primary" type="submit" [disabled]="!profileForm.valid" (click)="onSave(profileForm.value)">Save</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
