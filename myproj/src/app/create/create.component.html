@@ -51,13 +51,48 @@
                                 <span *ngIf="profileForm.get('phone').errors.required">
                                     Phone number is required.
                                 </span>
+                                <span *ngIf="profileForm.get('phone').errors?.minlength">
+                                    Phone number must be at least 10 characters long.
+                                </span>
+                                <span *ngIf="profileForm.get('phone').errors?.maxlength">
+                                    Phone number is not more than 10 digits.
+                                </span>
+                                <span *ngIf="profileForm.get('phone').touched && profileForm.get('phone').errors?.pattern">
+                                    Phone number should start with 6 or 7 or 8 or 9.
+                                </span>
                             </span>
 
                         </div>
                     </form>
-                    <button class="btn btn-primary" type="submit" [disabled]="!profileForm.valid" (click)="onSave(profileForm.value)">Save</button>
+                    <button  class="btn btn-primary" type="submit" [disabled]="!profileForm.valid" (click)="onSave(profileForm.value)" >Save</button>
+                    <button  class="btn btn-primary" type="submit" [disabled]="!profileForm.valid" (click)="onUpdate()" style="margin-left: 10px;" >Update</button>
                 </div>
             </div>
         </div>
     </div>
+    <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th scope="col">Id</th>
+            <th scope="col">Name</th>
+            <th scope="col">Salary</th>
+            <th scope="col">City</th>
+            <th scope="col">Mobile Number</th>
+            <th scope="col">Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let data of resData" >
+            <td>{{data.id}}</td>
+            <td>{{data.name}}</td>
+            <td>{{data.salary}}</td>
+            <td>{{data.city}}</td>
+            <td>{{data.phone}}</td>
+            <td><button class="btn btn-primary" (click)="editData(data)">Edit</button>
+                <button class="btn btn-primary" style="margin-left:10px;"
+                (click)="onDelete(data)">Delete</button></td>
+          </tr>
+        </tbody>
+      </table>
+
 </div>

@@ -12,16 +12,22 @@ export class EmployeeService {
 
   getAll():Observable<any>
   {
-    return this.http.get("http://192.168.3.73:8080/getAll/0/6");
+    return this.http.get("http://192.168.2.164:8081/employee/getAll/1/12");
   }
   getById(id)
   {
-    return this.http.get("http://192.168.3.73:8080/getById/",id);
+    const url="http://192.168.2.164:8081/employee/getById";
+    
+    return this.http.get(`${url}/${id}`);
   }
   saveEmployee(req){
-    return this.http.post("http://192.168.3.73:8080/saveOrUpdate",req);
+    return this.http.post("http://192.168.2.164:8081/employee/save",req);
+  }
+  updateEmployee(req){
+    return this.http.post("http://192.168.2.164:8081/employee/save",req);
   }
   deleteEmployee(id){
-    return this.http.get("http://192.168.3.73:8080/deleteById/",id);
+    const url="http://192.168.2.164:8081//employee/delete";
+    return this.http.delete(`${url}/${id}`);
   }
 }

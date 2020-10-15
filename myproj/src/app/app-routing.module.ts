@@ -1,14 +1,15 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { CreateComponent } from './create/create.component';
-import { ListComponent } from './list/list.component';
 import { CommonModule } from "@angular/common";
 
 
 const routes: Routes = [
-  {path:'create',component:CreateComponent},
-  {path:'list',component:ListComponent},
-  
+  {path:'',component:CreateComponent},
+  // {path:'list',component:ListComponent},
+  // {path:'edit/:id',component:CreateComponent},
+  // {path:'',redirectTo:'/list',pathMatch:'full'}
+
 ];
 
 @NgModule({
