@@ -14,7 +14,11 @@ import { ActivatedRoute, Router } from '@angular/router';
 export class CreateComponent implements OnInit {
   profile: any;
   resData:any;
-  empID:any
+  empID:any;
+  creText:Boolean=true;
+  creText1:Boolean=false;
+  upButton:Boolean=false;
+  saButton:Boolean=true;
 
   profileForm = this.fb.group({
     name: ['', Validators.required],
@@ -50,6 +54,10 @@ export class CreateComponent implements OnInit {
   }
 
   editData(d){
+    this.upButton=true;
+    this.saButton=false;
+    this.creText=false;
+    this.creText1=true;
     this.empID=d.id;
     console.log(d)
     this.ser.getById(d.id).subscribe(res=>{
@@ -80,8 +88,11 @@ export class CreateComponent implements OnInit {
    onDelete(d){
      console.log(d,"fsjkfjksfk")
      this.ser.deleteEmployee(d.id).subscribe((res)=>{
+      this.getAllData();
       console.log(res,"deleted");
-       this.getAllData();
+      
+     },(error)=>{
+      console.log(error);
      })
    }
    
